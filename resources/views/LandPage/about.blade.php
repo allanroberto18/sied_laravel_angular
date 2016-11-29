@@ -10,20 +10,23 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="single-service text-center light">
-                    <div class="service-border">
-                        <div class="service-icon">
-                            <div class="icon-middle">
-                                <i class="fa fa-inverse fa-2x fa-home"></i>
+                @foreach($sobreNos as $item)
+                    <div class="single-service text-center light">
+                        <div class="service-border">
+                            <div class="service-icon">
+                                <div class="icon-middle">
+                                    <i class="fa {{ $item->icone }} fa-2x fa-home"></i>
+                                </div>
+                            </div>
+                            <div class="service-text">
+                                <h4>{{ $item->titulo }}</h4>
+                                <p>
+                                    {{ $item->descricao }}
+                                </p>
                             </div>
                         </div>
-                        <div class="service-text">
-                            <h4>PURE &amp; SIMPLE</h4>
-                            <p>Your project looks great on any device. Content can be easily read and a user understands
-                                freely what you wanted to say him or her.</p>
-                        </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

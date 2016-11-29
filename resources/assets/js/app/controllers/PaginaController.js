@@ -1,7 +1,11 @@
-module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
+module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageService) {
+
+  $scope.modulo = {
+    title: 'Gerenciar Módulo',
+    subtitle: 'Páginas de Conteúdo'
+  };
 
   $scope.title = '';
-
   $scope.column = 'col-xs-12 col-sm-12 col-md-12 col-lg-12';
   $scope.loadList = '';
   $scope.showForm = false;
@@ -20,7 +24,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
   $scope.message = '';
 
   $scope.token = '';
-  $scope.icones = {};
+  $scope.imagem = '';
   $scope.entity = {};
   $scope.animationsEnabled = true;
 
@@ -34,7 +38,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
       .then(function (result) {
         $scope.items = result.data;
 
-        $scope.total = result.data.total
+        $scope.total = result.data.total;
 
         $scope.loadList = false;
       });
@@ -72,6 +76,16 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
     $scope.title = 'Novo Registro';
 
     $scope.edit(true);
+
+    $scope.entity = {
+      retranca: '',
+      titulo: '',
+      resumo: '',
+      texto: '',
+      credito: 'Divulgação',
+      legenda: '',
+      imagem: $scope.imagem
+    };
   };
 
   $scope.load = function (entity) {
@@ -86,13 +100,17 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
     $scope.message = '';
   }
 
-  $scope.cancel = function () {
+  $scope.cancel = function (form) {
+    if (form) {
+      form.$setPristine();
+      form.$setUntouched();
+    }
     $scope.entity = {};
     $scope.errors = '';
   };
 
-  $scope.close = function () {
-    $scope.cancel();
+  $scope.close = function (form) {
+    $scope.cancel(form);
 
     $scope.edit(false);
   };
@@ -222,6 +240,10 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
         });
       return;
     }
+
+    var fd = new FormData();
+    fd.append('file', entity.imagem[0]);
+
     ClientAPIService.getPost('pagina/salvar', entity)
       .success(function (data, status) {
 
@@ -246,4 +268,13 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
       });
     return;
   };
+
+  $scope.upload = function(imagem)
+  {
+    var fd = new FormData();
+    fd.append('file',imagem[0]);
+    ImageService.post(fd, 'pagina/upload').success(function(data){
+      $scope.entity.imagem = data;
+    });
+  }
 };

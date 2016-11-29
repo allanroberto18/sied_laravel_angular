@@ -1,7 +1,11 @@
 module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
 
-  $scope.title = '';
+  $scope.modulo = {
+    title: 'Gerenciar Módulo',
+    subtitle: 'Sobre Nós'
+  };
 
+  $scope.title = '';
   $scope.column = 'col-xs-12 col-sm-12 col-md-12 col-lg-12';
   $scope.loadList = '';
   $scope.showForm = false;
@@ -34,7 +38,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
       .then(function (result) {
         $scope.items = result.data;
 
-        $scope.total = result.data.total
+        $scope.total = result.data.total;
 
         $scope.loadList = false;
       });
@@ -48,8 +52,8 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
   };
 
   $scope.init = function () {
-    list(1);
     $scope.getIcones();
+    list(1);
   }
 
   $scope.getToken = function () {
@@ -94,13 +98,17 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
     $scope.message = '';
   }
 
-  $scope.cancel = function () {
+  $scope.cancel = function (form) {
+    if (form) {
+      form.$setPristine();
+      form.$setUntouched();
+    }
     $scope.entity = {};
     $scope.errors = '';
   };
 
-  $scope.close = function () {
-    $scope.cancel();
+  $scope.close = function (form) {
+    $scope.cancel(form);
 
     $scope.edit(false);
   };

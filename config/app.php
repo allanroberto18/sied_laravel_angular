@@ -239,7 +239,7 @@ return [
         /*
          * Debug Packages
          */
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        //'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 

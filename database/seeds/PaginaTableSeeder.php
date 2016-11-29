@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SobreNosTableSeeder extends Seeder
+class PaginaTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class SobreNosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\SobreNos::class, 6)->create();
+        factory(\App\Models\Pagina::class, 1)->create();
     }
 }

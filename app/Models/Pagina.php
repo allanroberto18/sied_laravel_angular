@@ -10,6 +10,8 @@ class Pagina extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'retranca', 'titulo', 'resumo', 'texto', 'credito', 'imagem', 'legenda', 'status'
+    ];
 
 }

@@ -33,7 +33,7 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- breadcrumb -->
-        @include('admin.template.breadcrumbs')
+        {{--@include('admin.template.breadcrumbs')--}}
 
         <!-- Main content -->
         <section class="content">

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PaginaRequest extends FormRequest
+class PaginaUploadRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,23 +24,13 @@ class PaginaRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo' => 'required',
-            'resumo' => 'required',
-            'texto' => 'required',
-            'credito' => 'required',
-            'legenda' => 'required',
-            'imagem' => 'required|mimes:jpeg,png'
+            'imagem' => 'mimes:jpeg,png'
         ];
     }
 
     public function attributes()
     {
         return [
-            'titulo' => 'Título',
-            'resumo' => 'Resumo',
-            'texto' => 'Texto',
-            'credito' => 'Crédito da Foto',
-            'legenda' => 'Legenda da Foto',
             'imagem' => 'Foto'
         ];
     }

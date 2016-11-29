@@ -1,5 +1,6 @@
 require('laravel-elixir-browserify-official');
 require('laravel-elixir-browser-sync-simple');
+require('laravel-elixir-config');
 
 const elixir = require('laravel-elixir');
 
@@ -91,6 +92,13 @@ elixir(function (mix) {
     assets + 'js/app/app.js',
     './public/js/app'
   );
+
+  mix.browserSync({
+    proxy: 'sied.dev',
+    logConnections: false,
+    reloadOnRestart: true,
+    notify: true,
+  });
 });
 
 

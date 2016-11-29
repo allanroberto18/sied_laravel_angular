@@ -30,3 +30,16 @@ $factory->define(App\Models\SobreNos::class, function (Faker\Generator $faker) {
         'icone' => 'fa-plus',
     ];
 });
+
+
+$factory->define(App\Models\Pagina::class, function (Faker\Generator $faker) {
+    return [
+        'retranca' => $faker->word,
+        'titulo' => $faker->sentence,
+        'resumo' => $faker->paragraph,
+        'texto' => $faker->text,
+        'credito' => 'Divulgação',
+        'imagem' => '2.png',
+        'legenda' => $faker->sentence,
+    ];
+});

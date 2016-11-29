@@ -13,7 +13,7 @@
 
 Route::get('/', 'LandPageController@index')->name('home');
 
-Route::group(['prefix' => 'angular', 'as' => 'angular.'], function(){
+Route::group(['prefix' => 'angular', 'as' => 'angular.', 'middleware' => 'cors'], function(){
     Route::get('token', 'TokenController@getToken')->name('token');
 });
 

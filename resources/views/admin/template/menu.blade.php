@@ -1,4 +1,4 @@
-<aside class="main-sidebar">
+<aside class="main-sidebar" ng-controller="MenuController">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <!-- Sidebar user panel -->
@@ -25,9 +25,19 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MENU PRINCIPAL</li>
-            <li>
-                <a href="{{ route('admin.dashboard') }}">
+            <li ng-class="{ active: isActive('/')}">
+                <a href="#/">
                     <i class="fa fa-dashboard"></i> <span>Início</span>
+                </a>
+            </li>
+            <li ng-class="{ active: isActive('/sobre_nos')}">
+                <a href="#sobre_nos">
+                    <i class="fa fa-info-circle"></i> <span>Sobre Nós</span>
+                </a>
+            </li>
+            <li ng-class="{ active: isActive('/pagina')}">
+                <a href="#pagina">
+                    <i class="fa fa-file-text-o"></i> <span>Página de Conteúdo</span>
                 </a>
             </li>
             {{--<li class="treeview">--}}
