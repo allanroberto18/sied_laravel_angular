@@ -5209,7 +5209,7 @@ ul{
     text-shadow: none;
 }
 body {
-  color: #D0D0D0;
+  color: #FFF;
   font-family: "montserratregular";
   font-size: 16px;
   line-height: 20px;
@@ -5337,7 +5337,7 @@ body {
     z-index: 999999;
 }
 #main-menu.stick {
-    background: #009fdd none repeat scroll 0 0;
+    background: #c9634c none repeat scroll 0 0;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
     padding: 10px 0;
     position: fixed;
@@ -5460,7 +5460,7 @@ body {
     line-height: 61px;
     margin-bottom: 23px;
 }
-.feature-text a.button {margin-top: 25px} 
+.feature-text a.button {margin-top: 25px}
 .app-image {
     margin-top: -140px;
     padding-left: 25px;
@@ -5533,7 +5533,7 @@ body {
     display: none;
 }
 .service-icon {
-    background: #009fdd none repeat scroll 0 0;
+    background: #c9634c none repeat scroll 0 0;
     border-radius: 100%;
     display: table;
     height: 71px;
@@ -5566,7 +5566,7 @@ body {
     top: 0;
     transform: scale(1);
 }
-/*--------------------------------------  
+/*--------------------------------------
 	6. Video Area
 ----------------------------------------*/
 .video-area {position: relative}
@@ -5616,7 +5616,7 @@ body {
 }
 #polina button:focus {outline: none}
 .video-text h1 {
-    color: #009fdd;
+    color: #c9634c;
     font-family: "montserratbold";
     font-size: 48px;
     margin-top: 33px;
@@ -5626,7 +5626,7 @@ body {
     font-family: 'montserrathairline';
     color: #fff
 }
-/*--------------------------------------  
+/*--------------------------------------
 	7. Features Carousel Area
 ----------------------------------------*/
 .features-carousel-area {
@@ -5694,12 +5694,12 @@ body {
 }
 .feature-list-carousel.owl-theme .owl-controls .owl-page.active:after, .feature-list-carousel.owl-theme .owl-controls .owl-page:hover:after {
     display: block
-} 
+}
 .feature-app {
     margin-bottom: -80px;
     position: relative;
 }
-/*--------------------------------------  
+/*--------------------------------------
 	8. Pricing Area
 ----------------------------------------*/
 .pricing-area {padding-top: 152px}
@@ -5717,7 +5717,7 @@ body {
     border-bottom: 1px solid #f5f5f5;
 }
 .price-title > h3 {
-    color: #009fdd;
+    color: #c9634c;
     font-size: 20px;
 }
 .price-title > h1 {
@@ -5777,7 +5777,7 @@ body {
     border-color: #d7d7d7;
     color: #fff;
 }
-/*--------------------------------------  
+/*--------------------------------------
 	9. Clients Area
 ----------------------------------------*/
 .clients-area {padding-top: 206px}
@@ -5866,7 +5866,7 @@ body {
     position: absolute
 }
 .slick-next:hover:before {background: url(../img/icon/arrow-right-hover.png)}
-/*--------------------------------------  
+/*--------------------------------------
 	10. Blog Area
 ----------------------------------------*/
 .blog-area {
@@ -5889,7 +5889,7 @@ body {
 }
 .single-blog:hover .blog-image a::before {opacity: 1}
 .blog-image .date-time {
-    background: #009fdd none repeat scroll 0 0;
+    background: #c9634c none repeat scroll 0 0;
     border-radius: 3px;
     bottom: 24px;
     color: #ffffff;
@@ -5934,7 +5934,7 @@ body {
 .blog-text > h3 a  {color: #ffffff}
 .single-blog:hover .blog-text > h3 a {color: #363636}
 .blog-text > p {color: #c3c3c3}
-.single-blog:hover .blog-text > p, .single-blog:hover .blog-text a.blog-button {color: #7d7d7d} 
+.single-blog:hover .blog-text > p, .single-blog:hover .blog-text a.blog-button {color: #7d7d7d}
 a.blog-button {
     color: #c3c3c3;
     display: inline-block;
@@ -5950,12 +5950,12 @@ a.blog-button i {
     top: 1px;
 }
 .blog-area .button {
-    background: #009fdd none repeat scroll 0 0;
-    border: 1px solid #009fdd;
+    background: #c9634c none repeat scroll 0 0;
+    border: 1px solid #c9634c;
 }
 .blog-area .button:hover {color: #fff}
 .buttons-load {margin-top: 46px}
-/*--------------------------------------  
+/*--------------------------------------
 	11. Download Area
 ----------------------------------------*/
 .download-area {
@@ -5970,7 +5970,7 @@ a.blog-button i {
 .download-buttons .button {
     background: #ffffff none repeat scroll 0 0;
     border-color: #ffffff;
-    color: #009fdd;
+    color: #c9634c;
     margin: 0 15px;
     padding: 0 28px 0 54px;
     position: relative;
@@ -5992,7 +5992,7 @@ a.blog-button i {
     border-color: #ffffff;
     color: #ffffff;
 }
-/*--------------------------------------  
+/*--------------------------------------
 	12. Contact Area
 ----------------------------------------*/
 .contact-area .section-title {margin-bottom: 30px;}
@@ -6064,8 +6064,8 @@ textarea.yourmessage.form-control:focus {
     border-color: #ebebeb
 }
 .submit-form .button {
-    background: #009fdd none repeat scroll 0 0;
-    border-color: #009fdd;
+    background: #c9634c none repeat scroll 0 0;
+    border-color: #c9634c;
     color: #ffffff;
     height: 48px;
     line-height: 48px;
@@ -6076,7 +6076,7 @@ textarea.yourmessage.form-control:focus {
     border-color: #009FDD;
     color: #009FDD;
 }
-/*--------------------------------------  
+/*--------------------------------------
 	13. Footer Area
 ----------------------------------------*/
 footer {
@@ -6100,7 +6100,7 @@ footer {
     width: 20px;
 }
 .social-link a:hover {color: #ffffff}
-/*----------------------------------------------------------------  
+/*----------------------------------------------------------------
 	14. Image, Solid, Gradient, Transparent, Video Background Area
 -------------------------------------------------------------------*/
 .slider-area {
@@ -6117,7 +6117,7 @@ footer {
 .banner-content.static-text.image-text .text-content .title1, .banner-content.static-text.image-text .text-content .title2, .banner-content.static-text.image-text .text-content .title3, .banner-content.static-text.image-text .text-content p {
     opacity: 0.65;
 }
-.banner-content.static-text.image-text .text-content .banner-button a {border-color: #d7d7d7} 
+.banner-content.static-text.image-text .text-content .banner-button a {border-color: #d7d7d7}
 .banner-content.static-text.image-text .text-content .banner-button a:hover {border-color: #009FDD}
 .slider-area.solid-color {
     background: #009FDD;
@@ -6129,7 +6129,7 @@ footer {
     color: #009FDD;
 }
 .transparent-overlay {
-    background: #009fdd none repeat scroll 0 0;
+    background: #c9634c none repeat scroll 0 0;
     height: 100%;
     left: 0;
     opacity: 0.8;
@@ -6146,7 +6146,7 @@ footer {
     opacity: 1
 }
 .video-overlay.transparent::after {
-    background: #009fdd none repeat scroll 0 0;
+    background: #c9634c none repeat scroll 0 0;
     opacity: 0.8;
 }
 .download-area.gradient, .download-area.gradient.light {
@@ -6173,7 +6173,7 @@ footer {
     color: #252830
 }
 .section-light-text .feature-text .button, .section-light-blog .blog-text > h3 a {color: #363636}
-.single-service.light .service-icon::after {border-color: #d3f5f8}
+.single-service.light .service-icon::after {border-color: #e2b7a7}
 .single-service.light .service-border::before, .single-service.light .service-border::after {background: #ebebeb}
 .text-white {color: #fff !important}
 .features-carousel-area.section-light-text .features-list h1 {color: #252525}
@@ -6874,5 +6874,27 @@ preview-2
 }
 .mb6 {
     margin-bottom: 60px;
+}
+
+.embed-responsive {
+    position: relative;
+    display: block;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.embed-responsive.embed-responsive-16by9 {
+    padding-bottom: 56.25%;
+}
+
+.embed-responsive-item {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 /*# sourceMappingURL=tema.css.map */

@@ -10404,4 +10404,26 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 .mb6 {
     margin-bottom: 60px;
 }
+
+.embed-responsive {
+    position: relative;
+    display: block;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.embed-responsive.embed-responsive-16by9 {
+    padding-bottom: 56.25%;
+}
+
+.embed-responsive-item {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
 /*# sourceMappingURL=admin.css.map */
