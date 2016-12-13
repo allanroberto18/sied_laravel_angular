@@ -10,6 +10,13 @@ class PaginaCaracteristica extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'pagina_id', 'icone', 'titulo', 'descricao', 'status'
+    ];
+
+    public function pagina()
+    {
+        return $this->belongsTo(Pagina::class, 'pagina_id', 'id');
+    }
 
 }

@@ -38,15 +38,14 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
       .then(function (result) {
         $scope.items = result.data;
 
-        $scope.total = result.data.total;
-
-        $scope.loadList = false;
+        $scope.total = result.data.meta.pagination.total;
       });
+    $scope.loadList = false;
   };
 
   $scope.getIcones = function () {
     ClientAPIService.getLoad('sobre_nos/icones')
-      .success(function (result, status) {
+      .then(function (result, status) {
         $scope.icones = result.data;
       });
   };
@@ -57,9 +56,10 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
   }
 
   $scope.getToken = function () {
-    ClientAPIService.getToken().success(function (data, status) {
-      $scope.token = data;
-    });
+    ClientAPIService.getToken()
+      .success(function (data, status) {
+        $scope.token = data;
+      });
   };
 
   $scope.edit = function (check) {
@@ -126,7 +126,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
   };
 
   $scope.delete = function (key, entity) {
-    var modulo = 'sobre_nos/delete/' + entity.id;
+    var modulo = 'sobre_nos/delete/';
 
     var modalInstance = $uibModal.open({
       animation: true,
@@ -148,24 +148,26 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
     });
 
     modalInstance.result.then(function () {
-      $scope.loadList = true;
-
       var selected = [];
-      selected.push = entity.id;
+      selected.push(entity.id);
       ClientAPIService.getDelete(modulo, selected)
         .success(function (data) {
+          $scope.loadList = true;
+
           $scope.message = data.data;
           $scope.items.data.splice(key, 1);
-          if ($scope.items.data.length == 0) {
-            list($scope.items.current_page);
-          }
-          $scope.entity = {};
+
           $scope.loadList = false;
+
+          if ($scope.items.data.length == 0) {
+            list($scope.items.data.meta.pagination.current_page);
+          }
+
+          $scope.entity = {};
         })
         .error(function (data, status) {
             if (status == 422) {
               $scope.errors = data.data;
-              $scope.loadList = false;
             }
           }
         );
@@ -191,10 +193,9 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
         }
       }
     });
+
     modalInstance.result.then(function () {
       $scope.message = '';
-
-      $scope.loadList = true;
 
       var selecteds = [];
       angular.forEach($scope.items.data, function (item) {
@@ -204,14 +205,14 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
       });
 
       if (selecteds.length > 0) {
-        ClientAPIService.getDelete('sobre_nos/delete', selecteds).success(function (data, status) {
-          $scope.itemsSelectedAll = false;
-          $scope.message = data.data;
+        ClientAPIService.getDelete('sobre_nos/delete', selecteds)
+          .success(function (data, status) {
+            $scope.itemsSelectedAll = false;
+            $scope.message = data.data;
 
-          list($scope.items.current_page);
-        });
+            list($scope.items.data.meta.pagination.current_page);
+          });
       }
-      $scope.loadList = false;
     });
   };
 
@@ -226,21 +227,17 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
           $scope.entity = {};
 
           $scope.edit(false);
-
-          $scope.loadForm = false;
         })
         .error(function (data, status) {
           if (status == 422) {
             $scope.errors = data;
-
-            $scope.loadForm = false;
           }
         });
+      $scope.loadForm = false;
       return;
     }
     ClientAPIService.getPost('sobre_nos/salvar', entity)
       .success(function (data, status) {
-
         entity.id = data.id;
 
         $scope.message = data.data;
@@ -250,16 +247,13 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
         $scope.edit(false);
 
         $scope.entity = {};
-
-        $scope.loadForm = false;
       })
       .error(function (data, status) {
         if (status == 422) {
           $scope.errors = data;
-
-          $scope.loadForm = false;
         }
       });
+    $scope.loadForm = false;
     return;
   };
 };

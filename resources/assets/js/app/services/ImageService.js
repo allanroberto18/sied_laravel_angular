@@ -2,9 +2,6 @@ module.exports = function ($http, configValue) {
   var prefix = 'api/angular/';
 
   this.post = function (data, modulo) {
-    console.log('teste');
-    console.log(data);
-
     return $http.post(configValue.apiUrl + prefix + modulo, data, {
       withCredentials: true,
       headers: {"Content-type": undefined},

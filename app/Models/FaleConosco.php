@@ -10,6 +10,8 @@ class FaleConosco extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'assunto', 'nome', 'telefone', 'email', 'mensagem', 'status'
+    ];
 
 }

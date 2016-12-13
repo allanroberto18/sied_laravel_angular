@@ -11,7 +11,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(SobreNosTableSeeder::class);
+        factory(\App\Models\User::class)->create([
+            'name' => 'Allan Roberto',
+            'email' => 'allanroberto18@gmail.com',
+            'password' => bcrypt('kerberos280104')
+        ]);
+
+        factory(\App\Models\User::class)->create([
+            'name' => 'Odair Ferreira Duarte',
+            'email' => 'odair@siedsistemas.com.br',
+            'password' => bcrypt('842578842578')
+        ]);
+
+        // $this->call(SobreNosTableSeeder::class);
         $this->call(PaginaTableSeeder::class);
     }
 }

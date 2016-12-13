@@ -10,6 +10,13 @@ class PaginaVideo extends Model implements Transformable
 {
     use TransformableTrait;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'pagina_id', 'link', 'largura', 'altura', 'status'
+    ];
+
+    public function pagina()
+    {
+        return $this->belongsTo(Pagina::class, 'pagina_id', 'id');
+    }
 
 }

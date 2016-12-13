@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Presenters\PaginaCaracteristicaPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\PaginaCaracteristicaRepository;
@@ -14,6 +15,8 @@ use App\Validators\PaginaCaracteristicaValidator;
  */
 class PaginaCaracteristicaRepositoryEloquent extends BaseRepository implements PaginaCaracteristicaRepository
 {
+    protected $skipPresenter = true;
+
     /**
      * Specify Model class name
      *
@@ -24,7 +27,10 @@ class PaginaCaracteristicaRepositoryEloquent extends BaseRepository implements P
         return PaginaCaracteristica::class;
     }
 
-    
+    public function presenter()
+    {
+        return PaginaCaracteristicaPresenter::class;
+    }
 
     /**
      * Boot up the repository, pushing criteria

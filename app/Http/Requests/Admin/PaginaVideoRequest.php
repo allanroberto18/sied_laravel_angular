@@ -13,18 +13,24 @@ class PaginaVideoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
-            //
+            'link' => 'required',
+            'altura' => 'required',
+            'largura' => 'required',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'link' => 'Link',
+            'altura' => 'Altura',
+            'largura' => 'Largura',
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Presenters\SobreNosPresenter;
+use App\Transformers\SobreNosTransformer;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\SobreNosRepository;
@@ -28,6 +30,11 @@ class SobreNosRepositoryEloquent extends BaseRepository implements SobreNosRepos
     public function model()
     {
         return SobreNos::class;
+    }
+
+    public function presenter()
+    {
+        return SobreNosPresenter::class;
     }
 
     /**

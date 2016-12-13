@@ -22,6 +22,11 @@ class FaleConoscoTransformer extends TransformerAbstract
     {
         return [
             'id'         => (int) $model->id,
+            'nome'         => (string) $model->nome,
+            'telefone'         => (string) $model->telefone,
+            'email'         => (string) $model->email,
+            'mensagem'         => (string) $model->mensagem,
+            'status'         => (int) $model->status,
 
             /* place your other model properties here */
 

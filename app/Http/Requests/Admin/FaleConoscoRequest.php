@@ -13,7 +13,7 @@ class FaleConoscoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,22 @@ class FaleConoscoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'assunto' => 'required',
+            'nome' => 'required',
+            'telefone' => 'required',
+            'email' => 'required|email',
+            'mensagem' => 'required',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'assunto' => 'Assunto',
+            'nome' => 'Nome',
+            'telefone' => 'Telefone',
+            'email' => 'E-mail',
+            'mensagem' => 'Mensagem',
         ];
     }
 }

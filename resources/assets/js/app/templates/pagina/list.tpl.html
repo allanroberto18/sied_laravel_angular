@@ -26,48 +26,86 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>
+                        <th width="10%">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" ng-model="itemsSelectedAll" ng-click="checkAll()"/>
                                 </label>
                             </div>
                         </th>
-                        <th>Opções</th>
-                        <th>Código</th>
-                        <th>Titulo</th>
+                        <th width="30%">Opções</th>
+                        <th width="60%">Titulo</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr dir-paginate="item in items.data | filter: search | itemsPerPage:perPage" total-items="total" current-page="pagination.current">
+                    <tr dir-paginate="item in items.data | filter: search | itemsPerPage:perPage" total-items="total"
+                        current-page="pagination.current">
                         <td>
                             <label>
-                                <input type="checkbox" ng-model="item.Selected" />
+                                <input type="checkbox" ng-model="item.Selected"/>
                             </label>
                         </td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn btn-default btn-flat dropdown-toggle" type="button" id="dropdownMenu1"
+                                <button class="btn btn-default btn-flat dropdown-toggle" type="button"
+                                        id="dropdownMenu1"
                                         data-toggle="dropdown">
                                     <i class="fa fa-cogs"></i> Opções
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                     <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#" ng-click="load(item)">
+                                        <a role="menuitem" tabindex="-1" ng-click="load(item)">
                                             <i class="fa fa-pencil-square-o"></i> Editar
                                         </a>
                                     </li>
                                     <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#" ng-click="delete($index, item)">
+                                        <a role="menuitem" tabindex="-1" ng-click="delete($index, item)">
                                             <i class="fa fa-times"></i> Excluir
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </td>
-                        <td>{{ item.id }}</td>
-                        <td><i class='fa' ng-class="item.icone"></i> {{ item.titulo }}</td>
+                        <td>
+                            <h4><small>{{ item.retranca }}</small> {{ item.titulo }}</h4>
+                            <p>{{ item.resumo }}</p>
+                            <!-- TAB NAVIGATION -->
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="active">
+                                        <a href="#tab_{{ $index }}_1" role="tab" data-toggle="tab" target="_self">
+                                            Características
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_{{ $index }}_2" role="tab" data-toggle="tab" target="_self">
+                                            Banner
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab_{{ $index }}_3" role="tab" data-toggle="tab" target="_self">
+                                            Video
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- TAB CONTENT -->
+                                <div class="tab-content">
+                                    <div class="active tab-pane fade in" id="tab_{{ $index }}_1"
+                                         ng-controller="PaginaCaracteristicaController" ng-init="init(item.id)">
+                                        <div ng-include="'js/app/templates/pagina/caracteristica/index.tpl.html'"></div>
+                                    </div>
+                                    <div class="active tab-pane fade in" id="tab_{{ $index }}_2"
+                                         ng-controller="BannerController" ng-init="init(item.id)">
+                                        <div ng-include="'js/app/templates/pagina/banner/index.tpl.html'"></div>
+                                    </div>
+                                    <div class="active tab-pane fade in" id="tab_{{ $index }}_3"
+                                         ng-controller="PaginaVideoController" ng-init="init(item.id)">
+                                        <div ng-include="'js/app/templates/pagina/video/index.tpl.html'"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                     <tfooter>
@@ -85,9 +123,6 @@
         </div>
         <div class="overlay" ng-show="loadList">
             <i class="fa fa-refresh fa-spin"></i>
-        </div>
-        <div class="box-footer">
-            <dir-pagination-controls on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
         </div>
     </div>
 </div>

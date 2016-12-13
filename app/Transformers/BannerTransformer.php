@@ -22,9 +22,14 @@ class BannerTransformer extends TransformerAbstract
     {
         return [
             'id'         => (int) $model->id,
-
-            /* place your other model properties here */
-
+            'pagina_id' => (string)$model->pagina_id,
+            'retranca' => (string)$model->retranca,
+            'titulo' => (string)$model->titulo,
+            'resumo' => (string)$model->resumo,
+            'link' => (string)$model->link,
+            'imagem_destaque' => (string)$model->imagem_destaque,
+            'imagem_fundo' => (string)$model->imagem_fundo,
+            'status' => (int)$model->status,
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];

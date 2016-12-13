@@ -17,9 +17,11 @@ Route::group(['prefix' => 'angular', 'as' => 'angular.', 'middleware' => 'cors']
     Route::get('token', 'TokenController@getToken')->name('token');
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin'], function(){
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => 'auth'], function(){
     Route::get('/', 'DashboardController@index')->name('dashboard');
-    Route::group(['prefix' => 'sobre_nos', 'as' => 'sobre_nos.'], function(){
-        Route::get('/', 'SobreNosController@index')->name('index');
-    });
+    Route::get('logout', 'DashboardController@logout')->name('logout');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

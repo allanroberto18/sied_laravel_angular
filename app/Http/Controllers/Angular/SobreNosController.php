@@ -45,7 +45,7 @@ class SobreNosController extends Controller
             $icons[$match[1]] = $match[1];
         }
 
-        return Response::json(['data' => $icons]);
+        return Response::json($icons);
     }
 
     public function remove($id)
@@ -73,7 +73,7 @@ class SobreNosController extends Controller
 
         return Response::json(
             [
-                "data" => "Registro {$entity->name} alterado com sucesso",
+                "data" => "Registro {$entity->titulo} alterado com sucesso",
                 "id" => $entity->id
             ]
         );
@@ -87,7 +87,7 @@ class SobreNosController extends Controller
 
         return Response::json(
             [
-                "data" => "Registro {$entity->name} inserida com sucesso",
+                "data" => "Registro {$entity->titulo} inserida com sucesso",
                 "id" => $entity->id
             ]
         );
@@ -102,7 +102,7 @@ class SobreNosController extends Controller
         if ($count == 0) {
             return Response::json(
                 [
-                    "data" => "Nenhum registro foi selecionado. \n"
+                    "data" => "Nenhum registro foi selecionado."
                 ]
             );
         }
@@ -117,7 +117,7 @@ class SobreNosController extends Controller
 
         return Response::json(
             [
-                "data" => "Os registros foram excluídos com sucesso. \n"
+                "data" => "Os registros foram excluídos com sucesso."
             ]
         );
     }

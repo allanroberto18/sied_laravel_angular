@@ -13,7 +13,7 @@ class PaginaCaracteristicaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,19 @@ class PaginaCaracteristicaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'icone' => 'required',
+            'titulo' => 'required|max:50',
+            'descricao' => 'required|max:130',
         ];
+    }
+
+    public function attributes()
+    {
+        return
+            [
+                'icone' => 'Icone',
+                'titulo' => 'Título',
+                'descricao' => 'Nome',
+            ];
     }
 }

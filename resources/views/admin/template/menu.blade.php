@@ -1,26 +1,26 @@
 <aside class="main-sidebar" ng-controller="MenuController">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
-            </div>
-            <div class="pull-left info">
-                <p>Alexander Pierce</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-        </div>
-        <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-        </form>
+        {{--<!-- Sidebar user panel -->--}}
+        {{--<div class="user-panel">--}}
+            {{--<div class="pull-left image">--}}
+                {{--<img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">--}}
+            {{--</div>--}}
+            {{--<div class="pull-left info">--}}
+                {{--<p>Alexander Pierce</p>--}}
+                {{--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<!-- search form -->--}}
+        {{--<form action="#" method="get" class="sidebar-form">--}}
+            {{--<div class="input-group">--}}
+                {{--<input type="text" name="q" class="form-control" placeholder="Search...">--}}
+                {{--<span class="input-group-btn">--}}
+                {{--<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>--}}
+                {{--</button>--}}
+              {{--</span>--}}
+            {{--</div>--}}
+        {{--</form>--}}
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
@@ -28,6 +28,11 @@
             <li ng-class="{ active: isActive('/')}">
                 <a href="#/">
                     <i class="fa fa-dashboard"></i> <span>Início</span>
+                </a>
+            </li>
+            <li ng-class="{ active: isActive('/config')}">
+                <a href="#config">
+                    <i class="fa fa-gears"></i> <span>Configurações</span>
                 </a>
             </li>
             <li ng-class="{ active: isActive('/sobre_nos')}">
@@ -38,6 +43,11 @@
             <li ng-class="{ active: isActive('/pagina')}">
                 <a href="#pagina">
                     <i class="fa fa-file-text-o"></i> <span>Página de Conteúdo</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admin/logout">
+                    <i class="fa fa-sign-out"></i> <span>Sair</span>
                 </a>
             </li>
             {{--<li class="treeview">--}}

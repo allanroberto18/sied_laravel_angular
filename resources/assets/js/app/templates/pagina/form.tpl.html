@@ -60,8 +60,8 @@
                         Foto:
                     </label>
                     <input type="file" name="file" onchange="angular.element(this).scope().upload(files)" accept="image/*"/>
-                    <div class="mt mb" ng-if="entity.imagem" ng-class="thumbnail">
-                        <img src="img/pagina/{{entity.imagem}}" class="img-responsive">
+                    <div class="mt mb" ng-if="imagem" ng-class="thumbnail">
+                        <img src="img/pagina/{{imagem}}" class="img-responsive">
                     </div>
                     <div class="help-block" ng-show="errors.imagem[0]">
                         <div ng-show="errors.imagem[0]">

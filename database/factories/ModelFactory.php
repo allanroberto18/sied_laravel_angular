@@ -43,3 +43,11 @@ $factory->define(App\Models\Pagina::class, function (Faker\Generator $faker) {
         'legenda' => $faker->sentence,
     ];
 });
+
+$factory->define(App\Models\PaginaCaracteristica::class, function (Faker\Generator $faker) {
+    return [
+        'titulo' => $faker->word,
+        'descricao' => $faker->title,
+        'icone' => 'fa-plus',
+    ];
+});

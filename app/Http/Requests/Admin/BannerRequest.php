@@ -13,7 +13,7 @@ class BannerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,20 @@ class BannerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'retranca' => 'required',
+            'titulo' => 'required',
+            'resumo' => 'required',
+            'link' => 'required',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'retranca' => 'Retranca',
+            'titulo' => 'Título',
+            'resumo' => 'Resumo',
+            'link' => 'Texto',
         ];
     }
 }

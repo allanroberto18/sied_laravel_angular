@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Presenters\PaginaVideoPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\PaginaVideoRepository;
@@ -14,6 +15,8 @@ use App\Validators\PaginaVideoValidator;
  */
 class PaginaVideoRepositoryEloquent extends BaseRepository implements PaginaVideoRepository
 {
+    protected $skipPresenter = true;
+
     /**
      * Specify Model class name
      *
@@ -24,7 +27,10 @@ class PaginaVideoRepositoryEloquent extends BaseRepository implements PaginaVide
         return PaginaVideo::class;
     }
 
-    
+    public function presenter()
+    {
+        return PaginaVideoPresenter::class;
+    }
 
     /**
      * Boot up the repository, pushing criteria

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Presenters\BannerPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\BannerRepository;
@@ -14,6 +15,8 @@ use App\Validators\BannerValidator;
  */
 class BannerRepositoryEloquent extends BaseRepository implements BannerRepository
 {
+    protected $skipPresenter = true;
+
     /**
      * Specify Model class name
      *
@@ -24,7 +27,10 @@ class BannerRepositoryEloquent extends BaseRepository implements BannerRepositor
         return Banner::class;
     }
 
-    
+    public function presenter()
+    {
+        return BannerPresenter::class;
+    }
 
     /**
      * Boot up the repository, pushing criteria

@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Sied Sistemas',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,7 +166,7 @@ return [
         /*
          * Debug Packages
          */
-        Barryvdh\Debugbar\ServiceProvider::class,
+        //Barryvdh\Debugbar\ServiceProvider::class,
 
 
         /*
@@ -175,6 +175,7 @@ return [
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
         //
 
         /*

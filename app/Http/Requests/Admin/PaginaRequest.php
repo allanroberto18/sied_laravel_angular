@@ -29,7 +29,6 @@ class PaginaRequest extends FormRequest
             'texto' => 'required',
             'credito' => 'required',
             'legenda' => 'required',
-            'imagem' => 'required|mimes:jpeg,png'
         ];
     }
 
@@ -41,7 +40,6 @@ class PaginaRequest extends FormRequest
             'texto' => 'Texto',
             'credito' => 'Crédito da Foto',
             'legenda' => 'Legenda da Foto',
-            'imagem' => 'Foto'
         ];
     }
 }

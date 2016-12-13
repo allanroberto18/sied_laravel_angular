@@ -15,7 +15,12 @@ class CreateFaleConoscosTable extends Migration
 	{
 		Schema::create('fale_conoscos', function(Blueprint $table) {
             $table->increments('id');
-
+            $table->string('assunto');
+            $table->string('nome');
+            $table->string('telefone');
+            $table->string('email');
+            $table->text('mensagem');
+            $table->integer('status')->default(1);
             $table->timestamps();
 		});
 	}

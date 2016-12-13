@@ -14,4 +14,19 @@ class Pagina extends Model implements Transformable
         'retranca', 'titulo', 'resumo', 'texto', 'credito', 'imagem', 'legenda', 'status'
     ];
 
+    public function banners()
+    {
+        return $this->hasMany(Banner::class, 'pagina_id', 'id');
+    }
+
+    public function caracteristicas()
+    {
+        return $this->hasMany(PaginaCaracteristica::class, 'pagina_id', 'id');
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(PaginaVideo::class, 'pagina_id', 'id');
+    }
+
 }

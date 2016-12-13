@@ -26,16 +26,15 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>
+                        <th width="10%">
                             <div class="checkbox">
                                 <label>
                                     <input type="checkbox" ng-model="itemsSelectedAll" ng-click="checkAll()"/>
                                 </label>
                             </div>
                         </th>
-                        <th>Opções</th>
-                        <th>Código</th>
-                        <th>Titulo</th>
+                        <th width="30%">Opções</th>
+                        <th width="60%">Titulo</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -54,19 +53,18 @@
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                                     <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#" ng-click="load(item)">
+                                        <a role="menuitem" tabindex="-1" ng-click="load(item)">
                                             <i class="fa fa-pencil-square-o"></i> Editar
                                         </a>
                                     </li>
                                     <li role="presentation">
-                                        <a role="menuitem" tabindex="-1" href="#" ng-click="delete($index, item)">
+                                        <a role="menuitem" tabindex="-1" ng-click="delete($index, item)">
                                             <i class="fa fa-times"></i> Excluir
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </td>
-                        <td>{{ item.id }}</td>
                         <td><i class='fa' ng-class="item.icone"></i> {{ item.titulo }}</td>
                     </tr>
                     </tbody>

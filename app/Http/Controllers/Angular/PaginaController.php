@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Angular;
 
 use App\Http\Requests\Admin\PaginaRequest;
 use App\Http\Requests\Admin\PaginaUploadRequest;
+use App\Http\Requests\Admin\UploadRequest;
 use Illuminate\Http\Request;
 use App\Repositories\PaginaRepository;
 use App\Http\Controllers\Controller;
@@ -27,11 +28,11 @@ class PaginaController extends Controller
 
     public function index(Request $request)
     {
-        return $this->repository->scopeQuery(function ($q) {
+        return $this->repository->skipPresenter(false)->scopeQuery(function ($q) {
             return $q->where([
                 'status' => 1
             ])->orderBy('id', 'desc');
-        })->skipPresenter(false)->paginate(10);
+        })->paginate(10);
     }
 
     public function remove($id)
@@ -55,19 +56,11 @@ class PaginaController extends Controller
 
         $data = $request->all();
 
-        if ($request->hasFile('imagem')) {
-            $extension = $request->file('imagem')->getClientOriginalExtension();
-            $fileName = random_int(1111, 9999) . $extension;
-            $request->file('imagem')->move(base_path() . '/public/img/pagina', $fileName);
-
-            $data['imagem'] = $fileName;
-        }
-
         $this->repository->update($data, $entity->id);
 
         return Response::json(
             [
-                "data" => "Registro {$entity->name} alterado com sucesso",
+                "data" => "Registro {$entity->titulo} alterado com sucesso",
                 "id" => $entity->id
             ]
         );
@@ -81,13 +74,13 @@ class PaginaController extends Controller
 
         return Response::json(
             [
-                "data" => "Registro {$entity->name} inserida com sucesso",
+                "data" => "Registro {$entity->titulo} inserida com sucesso",
                 "id" => $entity->id
             ]
         );
     }
 
-    public function upload(PaginaUploadRequest $request)
+    public function upload(UploadRequest $request)
     {
         $file = $request->file('file');
 
@@ -109,7 +102,7 @@ class PaginaController extends Controller
         if ($count == 0) {
             return Response::json(
                 [
-                    "data" => "Nenhum registro foi selecionado. \n"
+                    "data" => "Nenhum registro foi selecionado."
                 ]
             );
         }
@@ -124,7 +117,7 @@ class PaginaController extends Controller
 
         return Response::json(
             [
-                "data" => "Os registros foram excluídos com sucesso. \n"
+                "data" => "Os registros foram excluídos com sucesso."
             ]
         );
     }

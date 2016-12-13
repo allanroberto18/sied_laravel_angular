@@ -11,6 +11,10 @@ class PaginaTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Pagina::class, 1)->create();
+        $pagina = factory(\App\Models\Pagina::class, 1)->create();
+
+//        factory(\App\Models\PaginaCaracteristica::class, 9)->create([
+//            'pagina_id' => $pagina->id
+//        ]);
     }
 }

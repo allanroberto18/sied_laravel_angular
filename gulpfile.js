@@ -4,6 +4,8 @@ require('laravel-elixir-config');
 
 const elixir = require('laravel-elixir');
 
+require('laravel-elixir-vue-2');
+
 var node = './node_modules/',
   admin = node + 'admin-lte/',
   adminPlugins = admin + 'plugins/',
@@ -78,7 +80,7 @@ elixir(function (mix) {
       tema + 'jquery.scrollUp.min.js',
       tema + 'slick.min.js',
       tema + 'jquery.nav.js',
-      tema + 'video-bg.js',
+      // tema + 'video-bg.js',
       tema + 'plugins.js',
       tema + 'main.js'
     ], 'public/js/tema.js');
@@ -92,6 +94,9 @@ elixir(function (mix) {
     assets + 'js/app/app.js',
     './public/js/app'
   );
+
+  mix.sass('app.scss')
+    .webpack('app.js');
 
   mix.browserSync({
     proxy: 'sied.dev',

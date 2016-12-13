@@ -21,10 +21,12 @@ class PaginaCaracteristicaTransformer extends TransformerAbstract
     public function transform(PaginaCaracteristica $model)
     {
         return [
-            'id'         => (int) $model->id,
-
-            /* place your other model properties here */
-
+            'id' => (int)$model->id,
+            'pagina_id' => (string)$model->pagina_id,
+            'icone' => (string)$model->icone,
+            'titulo' => (string)$model->titulo,
+            'descricao' => (string)$model->descricao,
+            'status' => (int)$model->status,
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];

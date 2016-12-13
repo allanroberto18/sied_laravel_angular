@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\PaginaVideo;
 use App\Repositories\BannerRepository;
 use App\Repositories\BannerRepositoryEloquent;
+use App\Repositories\ConfigRepository;
+use App\Repositories\ConfigRepositoryEloquent;
 use App\Repositories\FaleConoscoAssuntoRepository;
 use App\Repositories\FaleConoscoAssuntoRepositoryEloquent;
 use App\Repositories\FaleConoscoRepository;
@@ -54,12 +56,12 @@ class AppServiceProvider extends ServiceProvider
             BannerRepositoryEloquent::class
         );
         $this->app->bind(
-            FaleConoscoRepository::class,
-            FaleConoscoRepositoryEloquent::class
+            ConfigRepository::class,
+            ConfigRepositoryEloquent::class
         );
         $this->app->bind(
-            FaleConoscoAssuntoRepository::class,
-            FaleConoscoAssuntoRepositoryEloquent::class
+            FaleConoscoRepository::class,
+            FaleConoscoRepositoryEloquent::class
         );
         $this->app->bind(
             PaginaRepository::class,

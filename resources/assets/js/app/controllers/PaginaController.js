@@ -38,10 +38,9 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
       .then(function (result) {
         $scope.items = result.data;
 
-        $scope.total = result.data.total;
-
-        $scope.loadList = false;
-      });
+        $scope.total = result.data.meta.pagination.total;
+      })
+    $scope.loadList = false;
   };
 
   $scope.init = function () {
@@ -49,9 +48,10 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
   }
 
   $scope.getToken = function () {
-    ClientAPIService.getToken().success(function (data, status) {
-      $scope.token = data;
-    });
+    ClientAPIService.getToken()
+      .success(function (data, status) {
+        $scope.token = data;
+      });
   };
 
   $scope.edit = function (check) {
@@ -67,9 +67,10 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
       $scope.column = 'col-xs-12 col-sm-12 col-md-6 col-lg-6';
 
       $scope.getToken();
-    }
 
-    return;
+      return;
+    }
+    $scope.imagem = '';
   };
 
   $scope.new = function () {
@@ -83,8 +84,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
       resumo: '',
       texto: '',
       credito: 'Divulgação',
-      legenda: '',
-      imagem: $scope.imagem
+      legenda: ''
     };
   };
 
@@ -94,6 +94,8 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
     $scope.entity = entity;
 
     $scope.edit(true);
+
+    $scope.imagem = entity.imagem;
   };
 
   $scope.closeMessage = function () {
@@ -128,7 +130,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
   };
 
   $scope.delete = function (key, entity) {
-    var modulo = 'pagina/delete/' + entity.id;
+    var modulo = 'pagina/delete/';
 
     var modalInstance = $uibModal.open({
       animation: true,
@@ -150,27 +152,28 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
     });
 
     modalInstance.result.then(function () {
-      $scope.loadList = true;
-
       var selected = [];
-      selected.push = entity.id;
+      selected.push(entity.id);
       ClientAPIService.getDelete(modulo, selected)
         .success(function (data) {
+          $scope.loadList = true;
+
           $scope.message = data.data;
           $scope.items.data.splice(key, 1);
-          if ($scope.items.data.length == 0) {
-            list($scope.items.current_page);
-          }
-          $scope.entity = {};
+
           $scope.loadList = false;
+
+          if ($scope.items.data.length == 0) {
+            list($scope.items.data.meta.pagination.current_page);
+          }
+
+          $scope.entity = {};
         })
         .error(function (data, status) {
-            if (status == 422) {
-              $scope.errors = data.data;
-              $scope.loadList = false;
-            }
+          if (status == 422) {
+            $scope.errors = data.data;
           }
-        );
+        });
     });
   };
 
@@ -193,10 +196,9 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
         }
       }
     });
+
     modalInstance.result.then(function () {
       $scope.message = '';
-
-      $scope.loadList = true;
 
       var selecteds = [];
       angular.forEach($scope.items.data, function (item) {
@@ -206,19 +208,21 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
       });
 
       if (selecteds.length > 0) {
-        ClientAPIService.getDelete('pagina/delete', selecteds).success(function (data, status) {
-          $scope.itemsSelectedAll = false;
-          $scope.message = data.data;
+        ClientAPIService.getDelete('pagina/delete', selecteds)
+          .success(function (data, status) {
+            $scope.itemsSelectedAll = false;
+            $scope.message = data.data;
 
-          list($scope.items.current_page);
-        });
+            list($scope.items.data.meta.pagination.current_page);
+          });
       }
-      $scope.loadList = false;
     });
   };
 
   $scope.save = function (entity) {
     $scope.loadForm = true;
+
+    entity.imagem = $scope.imagem;
 
     if (entity.id) {
       ClientAPIService.getPut('pagina/atualizar/' + entity.id, entity)
@@ -228,25 +232,18 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
           $scope.entity = {};
 
           $scope.edit(false);
-
-          $scope.loadForm = false;
         })
         .error(function (data, status) {
           if (status == 422) {
             $scope.errors = data;
-
-            $scope.loadForm = false;
           }
         });
+      $scope.loadForm = false;
       return;
     }
 
-    var fd = new FormData();
-    fd.append('file', entity.imagem[0]);
-
     ClientAPIService.getPost('pagina/salvar', entity)
       .success(function (data, status) {
-
         entity.id = data.id;
 
         $scope.message = data.data;
@@ -256,25 +253,23 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
         $scope.edit(false);
 
         $scope.entity = {};
-
-        $scope.loadForm = false;
       })
       .error(function (data, status) {
         if (status == 422) {
           $scope.errors = data;
-
-          $scope.loadForm = false;
         }
       });
+    $scope.loadForm = false;
     return;
   };
 
-  $scope.upload = function(imagem)
-  {
+  $scope.upload = function (imagem) {
     var fd = new FormData();
-    fd.append('file',imagem[0]);
-    ImageService.post(fd, 'pagina/upload').success(function(data){
-      $scope.entity.imagem = data;
-    });
+    fd.append('file', imagem[0]);
+
+    ImageService.post(fd, 'pagina/upload')
+      .then(function (data) {
+        $scope.imagem = data.data;
+      });
   }
 };

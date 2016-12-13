@@ -22,9 +22,10 @@ class VideoTransformer extends TransformerAbstract
     {
         return [
             'id'         => (int) $model->id,
-
-            /* place your other model properties here */
-
+            'link'         => (string) $model->link,
+            'altura'         => (int) $model->altura,
+            'largura'         => (int) $model->largura,
+            'status'         => (int) $model->status,
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];

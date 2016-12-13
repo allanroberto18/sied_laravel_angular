@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Presenters\FaleConoscoPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\FaleConoscoRepository;
@@ -14,6 +15,8 @@ use App\Validators\FaleConoscoValidator;
  */
 class FaleConoscoRepositoryEloquent extends BaseRepository implements FaleConoscoRepository
 {
+    protected $skipPresenter = true;
+
     /**
      * Specify Model class name
      *
@@ -24,7 +27,10 @@ class FaleConoscoRepositoryEloquent extends BaseRepository implements FaleConosc
         return FaleConosco::class;
     }
 
-    
+    public function presenter()
+    {
+        return FaleConoscoPresenter::class;
+    }
 
     /**
      * Boot up the repository, pushing criteria

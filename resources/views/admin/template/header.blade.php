@@ -19,25 +19,25 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
-                <li class="dropdown messages-menu">
-                    @include('admin.template.header.messages')
-                </li>
-                <!-- Notifications: style can be found in dropdown.less -->
-                <li class="dropdown notifications-menu">
-                    @include('admin.template.header.notifications')
-                </li>
-                <!-- Tasks: style can be found in dropdown.less -->
-                <li class="dropdown tasks-menu">
-                    @include('admin.template.header.tasks')
-                </li>
-                <!-- User Account: style can be found in dropdown.less -->
-                <li class="dropdown user user-menu">
-                    @include('admin.template.header.profile')
-                </li>
+                {{--<li class="dropdown messages-menu">--}}
+                    {{--@include('admin.template.header.messages')--}}
+                {{--</li>--}}
+                {{--<!-- Notifications: style can be found in dropdown.less -->--}}
+                {{--<li class="dropdown notifications-menu">--}}
+                    {{--@include('admin.template.header.notifications')--}}
+                {{--</li>--}}
+                {{--<!-- Tasks: style can be found in dropdown.less -->--}}
+                {{--<li class="dropdown tasks-menu">--}}
+                    {{--@include('admin.template.header.tasks')--}}
+                {{--</li>--}}
+                {{--<!-- User Account: style can be found in dropdown.less -->--}}
+                {{--<li class="dropdown user user-menu">--}}
+                    {{--@include('admin.template.header.profile')--}}
+                {{--</li>--}}
                 <!-- Control Sidebar Toggle Button -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                </li>
+                {{--<li>--}}
+                    {{--<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>--}}
+                {{--</li>--}}
             </ul>
         </div>
     </nav>
