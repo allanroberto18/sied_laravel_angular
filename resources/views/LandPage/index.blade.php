@@ -60,53 +60,36 @@
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
                 <div class="feature-text">
-                    <p class="p-title">Features</p>
-                    <h2>Amazing</h2>
-                    <h1>Features</h1>
-                    <p>Tempora similique excepturi obcaecati, maiores nostrum esse illo in soluta at saepe perspiciatis
-                        eos quasi laudantium sunt ad quaerat?</p>
-                    <a href="#" class="button">Read More</a>
+                    <p class="p-title">{{ $pagina->retranca }}</p>
+                    <h2>{{ $pagina->titulo }}</h2>
+                    {{--<h1>Features</h1>--}}
+                    <p>{{ $pagina->resumo }}</p>
+                    <a href="#" class="button">Leia Mais</a>
                 </div>
             </div>
             <div class="hidden-xs hidden-sm col-md-3 col-lg-4">
                 <div class="app-image">
-                    <img src="img/app/1.png" alt="">
+                    <img src="/img/pagina/{{$pagina->imagem}}" alt="{{ $pagina->legenda }} - {{ $pagina->credito }}">
                 </div>
             </div>
             <div class="col-md-5 col-sm-7 col-xs-12">
                 <div class="feature-list">
+                    {!! $i = 0 !!}
+                    @foreach($pagina->caracteristicas as $item)
+                    @if ($i < 4)
+                        @break;
+                    @endif
                     <div class="single-feature">
-                        <span><img src="img/icon/mac-dark.png" alt=""></span>
+                        <span class="fa {{ $item->icone }}"></span>
                         <div class="single-feature-text">
-                            <h5>Clean Design</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing<br>
-                                elitr eiciendis autem aperiam.</p>
+                            <h5>{{ $item->titulo }}</h5>
+                            <p>
+                                {{ $item->descricao }}
+                            </p>
                         </div>
                     </div>
-                    <div class="single-feature">
-                        <span><img src="img/icon/headphone-dark.png" alt=""></span>
-                        <div class="single-feature-text">
-                            <h5>Dedicated Support</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetuer <br>
-                                adipiscing elit. Aenean commodo ligula eget dolor. </p>
-                        </div>
-                    </div>
-                    <div class="single-feature">
-                        <span><img src="img/icon/setting-dark.png" alt=""></span>
-                        <div class="single-feature-text">
-                            <h5>Very Customizable</h5>
-                            <p>Aenean massa. Cum sociis natoque<br>
-                                penatibus et magnis Lorem ipsum dolor sit amet,</p>
-                        </div>
-                    </div>
-                    <div class="single-feature">
-                        <span><img src="img/icon/multi-dark.png" alt=""></span>
-                        <div class="single-feature-text">
-                            <h5>Multiple Demos</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing <br>
-                                elitr eiciendis autem aperiam.</p>
-                        </div>
-                    </div>
+                    {!! $i++ !!}
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -1,10 +1,9 @@
 require('laravel-elixir-browserify-official');
 require('laravel-elixir-browser-sync-simple');
 require('laravel-elixir-config');
+require('laravel-elixir-vue-2');
 
 const elixir = require('laravel-elixir');
-
-require('laravel-elixir-vue-2');
 
 var node = './node_modules/',
   admin = node + 'admin-lte/',
@@ -99,7 +98,7 @@ elixir(function (mix) {
     .webpack('app.js');
 
   mix.browserSync({
-    proxy: 'sied.dev',
+    proxy: 'sied.app',
     logConnections: false,
     reloadOnRestart: true,
     notify: true,

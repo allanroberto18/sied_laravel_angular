@@ -28,40 +28,88 @@ var FaleConoscoController = require('./controllers/FaleConoscoController');
 var ConfigController = require('./controllers/ConfigController');
 
 angular.module('app', [
-  'angularUtils.directives.dirPagination',
-  'ngSanitize',
-  'ngAnimate',
-  'ui.bootstrap',
-  'ngRoute',
-  'youtube-embed',
-  'ui.utils.masks'
+    'angularUtils.directives.dirPagination',
+    'ngSanitize',
+    'ngAnimate',
+    'ui.bootstrap',
+    'ngRoute',
+    'youtube-embed',
+    'ui.utils.masks'
 ]).config(
-  function (paginationTemplateProvider) {
-    paginationTemplateProvider.setPath('/js/app/templates/dirPagination.tpl.html');
-  }
+    function (paginationTemplateProvider) {
+        paginationTemplateProvider.setPath('/js/app/templates/dirPagination.tpl.html');
+    }
 );
 
 angular.module('app').config(function ($routeProvider) {
-  $routeProvider
-    .when("/", {
-      templateUrl: "/js/app/templates/dashboard/index.tpl.html"
-    })
-    .when("/config", {
-      templateUrl: "/js/app/templates/config/index.tpl.html"
-    })
-    .when("/contato", {
-      templateUrl: "/js/app/templates/contato/index.tpl.html"
-    })
-    .when("/pagina", {
-      templateUrl: "/js/app/templates/pagina/index.tpl.html"
-    })
-    .when("/sobre_nos", {
-      templateUrl: "/js/app/templates/sobre_nos/index.tpl.html"
-    })
-    .when("/video", {
-      templateUrl: "/js/app/templates/video/index.tpl.html"
-    })
-  ;
+    $routeProvider
+        .when("/", {
+            templateUrl: "/js/app/templates/dashboard/index.tpl.html",
+            resolve: {
+                // I will cause a 1 second delay
+                delay: function ($q, $timeout) {
+                    var delay = $q.defer();
+                    $timeout(delay.resolve, 1000);
+                    return delay.promise;
+                }
+            }
+        })
+        .when("/config", {
+            templateUrl: "/js/app/templates/config/index.tpl.html",
+            resolve: {
+                // I will cause a 1 second delay
+                delay: function ($q, $timeout) {
+                    var delay = $q.defer();
+                    $timeout(delay.resolve, 1000);
+                    return delay.promise;
+                }
+            }
+        })
+        .when("/contato", {
+            templateUrl: "/js/app/templates/contato/index.tpl.html",
+            resolve: {
+                // I will cause a 1 second delay
+                delay: function ($q, $timeout) {
+                    var delay = $q.defer();
+                    $timeout(delay.resolve, 1000);
+                    return delay.promise;
+                }
+            }
+        })
+        .when("/pagina", {
+            templateUrl: "/js/app/templates/pagina/index.tpl.html",
+            resolve: {
+                // I will cause a 1 second delay
+                delay: function ($q, $timeout) {
+                    var delay = $q.defer();
+                    $timeout(delay.resolve, 1000);
+                    return delay.promise;
+                }
+            }
+        })
+        .when("/sobre_nos", {
+            templateUrl: "/js/app/templates/sobre_nos/index.tpl.html",
+            resolve: {
+                // I will cause a 1 second delay
+                delay: function ($q, $timeout) {
+                    var delay = $q.defer();
+                    $timeout(delay.resolve, 1000);
+                    return delay.promise;
+                }
+            }
+        })
+        .when("/video", {
+            templateUrl: "/js/app/templates/video/index.tpl.html",
+            resolve: {
+                // I will cause a 1 second delay
+                delay: function ($q, $timeout) {
+                    var delay = $q.defer();
+                    $timeout(delay.resolve, 1000);
+                    return delay.promise;
+                }
+            }
+        })
+    ;
 });
 
 angular.module('app').value('configValue', configValue);

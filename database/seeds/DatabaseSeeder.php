@@ -23,7 +23,9 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('842578842578')
         ]);
 
-        // $this->call(SobreNosTableSeeder::class);
+        factory(\App\Models\Config::class)->create();
+
+        $this->call(SobreNosTableSeeder::class);
         $this->call(PaginaTableSeeder::class);
     }
 }

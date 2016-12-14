@@ -21,7 +21,7 @@
 <!-- Main content -->
 <section class="content mt6">
     <div class="text-center">
-        <img src="{{ asset('img/logoweb.png') }}" alt="" />
+        <img src="{{ asset('/img/LogoWeb.png') }}" alt=""/>
     </div>
 
     <div class="error-page mt6">
@@ -37,16 +37,16 @@
                 e tente novamente.
             </p>
             <form class="search-form">
-            <div class="input-group">
-            <input type="text" name="search" class="form-control" placeholder="Pesquisar página">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Pesquisar página">
 
-            <div class="input-group-btn">
-            <button type="submit" name="submit" class="btn btn-danger btn-flat">
-                <i class="fa fa-search"></i>
-            </button>
-            </div>
-            </div>
-            <!-- /.input-group -->
+                    <div class="input-group-btn">
+                        <button type="submit" name="submit" class="btn btn-danger btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.input-group -->
             </form>
         </div>
         <!-- /.error-content -->

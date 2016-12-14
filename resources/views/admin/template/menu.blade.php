@@ -26,22 +26,22 @@
         <ul class="sidebar-menu">
             <li class="header">MENU PRINCIPAL</li>
             <li ng-class="{ active: isActive('/')}">
-                <a href="#/">
+                <a ng-click="go('/')">
                     <i class="fa fa-dashboard"></i> <span>Início</span>
                 </a>
             </li>
             <li ng-class="{ active: isActive('/config')}">
-                <a href="#config">
+                <a ng-click="go('/config')">
                     <i class="fa fa-gears"></i> <span>Configurações</span>
                 </a>
             </li>
             <li ng-class="{ active: isActive('/sobre_nos')}">
-                <a href="#sobre_nos">
+                <a ng-click="go('/sobre_nos')">
                     <i class="fa fa-info-circle"></i> <span>Sobre Nós</span>
                 </a>
             </li>
             <li ng-class="{ active: isActive('/pagina')}">
-                <a href="#pagina">
+                <a ng-click="go('/pagina')">
                     <i class="fa fa-file-text-o"></i> <span>Página de Conteúdo</span>
                 </a>
             </li>

@@ -21,7 +21,7 @@
 <!-- Main content -->
 <section class="content mt6">
     <div class="text-center">
-        <img src="{{ asset('img/logoweb.png') }}" alt="" />
+        <img src="{{ asset('/img/LogoWeb.png') }}" alt="" />
     </div>
     <div class="error-page2 mt6 text-center">
         <div class="error-content">

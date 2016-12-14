@@ -51,3 +51,20 @@ $factory->define(App\Models\PaginaCaracteristica::class, function (Faker\Generat
         'icone' => 'fa-plus',
     ];
 });
+
+$factory->define(App\Models\Config::class, function (Faker\Generator $faker) {
+    return [
+        'nome' => 'Sied Sistemas',
+        'email' => 'odair@siedsistemas.com.br',
+        'telefone' => '(63)3214-3108',
+        'cep' => '77023044',
+        'logradouro' => '804 Sul Alameda 14',
+        'complemento' => 'Lote 71',
+        'numero' => 'S/N',
+        'bairro' => 'Plano Diretor Sul',
+        'localidade' => 'Palmas',
+        'uf' => 'TO',
+        'logo' => 'LogoWeb.png',
+        'status' => 0,
+    ];
+});

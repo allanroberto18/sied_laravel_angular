@@ -3,104 +3,29 @@
         <div class="row">
             <div class="col-lg-6 col-md-7 col-sm-9">
                 <div class="features-list">
-                    <h1>Screenshots</h1>
+                    <h1>Telas do Sistema</h1>
                     <div class="feature-list-carousel">
+                        @for($i = 0; $i < $totalCaracteristicas; $i += 3)
                         <div class="feature-list-carousel-item">
+                            @foreach($caracteristicas[$i] as $item)
                             <div class="single-features-list">
                                 <div class="feature-list-img">
-                                    <span><img src="img/icon/camera-dark.png" alt=""></span>
+                                    <span>
+                                        <div class="icon-middle">
+                                            <i class="fa {{ $item->icone }} fa-2x fa-home"></i>
+                                        </div>
+                                    </span>
                                 </div>
                                 <div class="feature-list-text">
-                                    <h4>Present your app with AppSperia screenshots</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitr eiciendis<br>
-                                        autem aperiam.</p>
+                                    <h4>{{ $item->titulo }}</h4>
+                                    <p>
+                                        {{ $item->descricao }}
+                                    </p>
                                 </div>
                             </div>
-                            <div class="single-features-list">
-                                <div class="feature-list-img">
-                                    <span><img src="img/icon/image-dark.png" alt=""></span>
-                                </div>
-                                <div class="feature-list-text">
-                                    <h4>Change images using side arrows or caption bullets</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer<br>
-                                        adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                                </div>
-                            </div>
-                            <div class="single-features-list">
-                                <div class="feature-list-img">
-                                    <span><img src="img/icon/screen-dark.png" alt=""></span>
-                                </div>
-                                <div class="feature-list-text">
-                                    <h4>Navigate using keyboard arrows to change screenshots</h4>
-                                    <p>Aenean massa. Cum sociis natoque<br>
-                                        penatibus et magnis Lorem ipsum dolor sit amet,</p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
-                        <div class="feature-list-carousel-item">
-                            <div class="single-features-list">
-                                <div class="feature-list-img">
-                                    <span><img src="img/icon/camera-dark.png" alt=""></span>
-                                </div>
-                                <div class="feature-list-text">
-                                    <h4>Present your app with AppSperia screenshots</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitr eiciendis<br>
-                                        autem aperiam.</p>
-                                </div>
-                            </div>
-                            <div class="single-features-list">
-                                <div class="feature-list-img">
-                                    <span><img src="img/icon/image-dark.png" alt=""></span>
-                                </div>
-                                <div class="feature-list-text">
-                                    <h4>Change images using side arrows or caption bullets</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer<br>
-                                        adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                                </div>
-                            </div>
-                            <div class="single-features-list">
-                                <div class="feature-list-img">
-                                    <span><img src="img/icon/screen-dark.png" alt=""></span>
-                                </div>
-                                <div class="feature-list-text">
-                                    <h4>Navigate using keyboard arrows to change screenshots</h4>
-                                    <p>Aenean massa. Cum sociis natoque<br>
-                                        penatibus et magnis Lorem ipsum dolor sit amet,</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="feature-list-carousel-item">
-                            <div class="single-features-list">
-                                <div class="feature-list-img">
-                                    <span><img src="img/icon/camera-dark.png" alt=""></span>
-                                </div>
-                                <div class="feature-list-text">
-                                    <h4>Present your app with AppSperia screenshots</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elitr eiciendis<br>
-                                        autem aperiam.</p>
-                                </div>
-                            </div>
-                            <div class="single-features-list">
-                                <div class="feature-list-img">
-                                    <span><img src="img/icon/image-dark.png" alt=""></span>
-                                </div>
-                                <div class="feature-list-text">
-                                    <h4>Change images using side arrows or caption bullets</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetuer<br>
-                                        adipiscing elit. Aenean commodo ligula eget dolor.</p>
-                                </div>
-                            </div>
-                            <div class="single-features-list">
-                                <div class="feature-list-img">
-                                    <span><img src="img/icon/screen-dark.png" alt=""></span>
-                                </div>
-                                <div class="feature-list-text">
-                                    <h4>Navigate using keyboard arrows to change screenshots</h4>
-                                    <p>Aenean massa. Cum sociis natoque<br>
-                                        penatibus et magnis Lorem ipsum dolor sit amet,</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endfor
                     </div>
                 </div>
             </div>

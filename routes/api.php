@@ -18,7 +18,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::group(['prefix' => 'angular', 'middleware' => 'cors', 'as' => 'angular.', 'namespace' => 'Angular'], function(){
-    
+
     Route::group(['prefix' => 'pagina', 'as' => 'pagina.'], function(){
         Route::get('', 'PaginaController@index')->name('index');
         Route::post('delete', 'PaginaController@removeSelected')->name('deleteSelected');
