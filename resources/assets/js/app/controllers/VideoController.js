@@ -49,7 +49,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
 
   $scope.getToken = function () {
     ClientAPIService.getToken()
-      .success(function (data, status) {
+      .then(function (data, status) {
         $scope.token = data;
       });
   };
@@ -155,7 +155,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
       var selected = [];
       selected.push(entity.id);
       ClientAPIService.getDelete(modulo, selected)
-        .success(function (data) {
+        .then(function (data) {
           $scope.loadList = true;
 
           $scope.message = data.data;
@@ -169,7 +169,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
 
           $scope.entity = {};
         })
-        .error(function (data, status) {
+        .then(function (data, status) {
           if (status == 422) {
             $scope.errors = data.data;
           }
@@ -209,7 +209,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
 
       if (selecteds.length > 0) {
         ClientAPIService.getDelete('video/delete', selecteds)
-          .success(function (data, status) {
+          .then(function (data, status) {
             $scope.itemsSelectedAll = false;
             $scope.message = data.data;
 
@@ -226,14 +226,14 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
 
     if (entity.id) {
       ClientAPIService.getPut('video/atualizar/' + entity.id, entity)
-        .success(function (data, status) {
+        .then(function (data, status) {
           $scope.message = data.data;
 
           $scope.entity = {};
 
           $scope.edit(false);
         })
-        .error(function (data, status) {
+        .then(function (data, status) {
           if (status == 422) {
             $scope.errors = data;
           }
@@ -243,7 +243,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
     }
 
     ClientAPIService.getPost('video/salvar', entity)
-      .success(function (data, status) {
+      .then(function (data, status) {
         entity.id = data.id;
 
         $scope.message = data.data;
@@ -254,7 +254,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
 
         $scope.entity = {};
       })
-      .error(function (data, status) {
+      .then(function (data, status) {
         if (status == 422) {
           $scope.errors = data;
         }

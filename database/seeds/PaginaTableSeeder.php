@@ -13,8 +13,8 @@ class PaginaTableSeeder extends Seeder
     {
         $pagina = factory(\App\Models\Pagina::class, 1)->create();
 
-        factory(\App\Models\PaginaCaracteristica::class, 9)->create([
-            'pagina_id' => $pagina->id
-        ]);
+//        factory(\App\Models\PaginaCaracteristica::class, 9)->create([
+//            'pagina_id' => $pagina->id
+//        ]);
     }
 }

@@ -17,6 +17,7 @@
 
     <script src="{{ asset('js/admin.js') }}"></script>
     <script src="{{ asset('js/app/app.js') }}"></script>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-app="app">
 <!-- Site wrapper -->

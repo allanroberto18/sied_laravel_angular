@@ -19,14 +19,12 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
 
   $scope.token = '';
   $scope.pagina = '';
-  $scope.imagemDestaque = '';
-  $scope.imagemFundo = '';
   $scope.entity = {};
   $scope.animationsEnabled = true;
 
   var list = function () {
     $scope.loadList = true;
-    ClientAPIService.getLoad('pagina/banner/' + scope.pagina)
+    ClientAPIService.getLoad('pagina/banner/' + $scope.pagina)
       .then(function (result) {
         $scope.items = result.data;
       })
@@ -40,7 +38,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
 
   $scope.getToken = function () {
     ClientAPIService.getToken()
-      .success(function (data, status) {
+      .then(function (data, status) {
         $scope.token = data;
       });
   };
@@ -61,7 +59,6 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
 
       return;
     }
-    $scope.imagem = '';
   };
 
   $scope.new = function () {
@@ -74,7 +71,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
       retranca: '',
       titulo: '',
       resumo: '',
-      link: '',
+      link: '#',
       imagem_destaque: '',
       imagem_fundo: ''
     };
@@ -83,11 +80,11 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
   $scope.load = function (entity) {
     $scope.title = 'Alterar Registro #' + entity.id;
 
+    $log.info(entity);
+
     $scope.entity = entity;
 
     $scope.edit(true);
-
-    $scope.imagem = entity.imagem;
   };
 
   $scope.closeMessage = function () {
@@ -147,7 +144,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
       var selected = [];
       selected.push(entity.id);
       ClientAPIService.getDelete(modulo, selected)
-        .success(function (data) {
+        .then(function (data) {
           $scope.loadList = true;
 
           $scope.message = data.data;
@@ -161,7 +158,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
 
           $scope.entity = {};
         })
-        .error(function (data, status) {
+        .then(function (data, status) {
           if (status == 422) {
             $scope.errors = data.data;
           }
@@ -201,7 +198,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
 
       if (selecteds.length > 0) {
         ClientAPIService.getDelete('pagina/banner/delete', selecteds)
-          .success(function (data, status) {
+          .then(function (data, status) {
             $scope.itemsSelectedAll = false;
             $scope.message = data.data;
 
@@ -214,19 +211,16 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
   $scope.save = function (entity) {
     $scope.loadForm = true;
 
-    entity.imagem_destaque = $scope.imagemDestaque;
-    entity.imagem_fundo = $scope.imagemFundo;
-
     if (entity.id) {
       ClientAPIService.getPut('pagina/banner/atualizar/' + entity.id, entity)
-        .success(function (data, status) {
+        .then(function (data, status) {
           $scope.message = data.data;
 
           $scope.entity = {};
 
           $scope.edit(false);
         })
-        .error(function (data, status) {
+        .then(function (data, status) {
           if (status == 422) {
             $scope.errors = data;
           }
@@ -236,7 +230,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
     }
 
     ClientAPIService.getPost('pagina/banner/salvar', entity)
-      .success(function (data, status) {
+      .then(function (data, status) {
         entity.id = data.id;
 
         $scope.message = data.data;
@@ -247,7 +241,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
 
         $scope.entity = {};
       })
-      .error(function (data, status) {
+      .then(function (data, status) {
         if (status == 422) {
           $scope.errors = data;
         }
@@ -264,10 +258,10 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService, ImageServi
       .then(function (data) {
         if (tipo === 1)
         {
-          $scope.imagemDestaque = data.data;
+          $scope.entity.imagem_destaque = data.data;
           return ;
         }
-        $scope.imagemFundo = data.data;
+        $scope.entity.imagem_fundo = data.data;
       });
   }
 };

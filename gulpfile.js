@@ -64,7 +64,9 @@ elixir(function (mix) {
       adminPlugins + 'input-mask/jquery.inputmask.date.extensions.js',
       adminPlugins + 'datepicker/bootstrap-datepicker.js',
       adminPlugins + 'datepicker/locales/bootstrap-datepicker.pt-BR.js',
-      adminPlugins + 'select2/select2.js'
+      adminPlugins + 'select2/select2.js',
+      adminPlugins + 'ckeditor/ckeditor.js',
+      'custom.js',
     ], 'public/js/admin.js');
 
   mix.scripts(

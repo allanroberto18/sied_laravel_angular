@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'LandPageController@index')->name('home');
+
 
 Route::group(['prefix' => 'angular', 'as' => 'angular.', 'middleware' => 'cors'], function(){
     Route::get('token', 'TokenController@getToken')->name('token');
@@ -24,4 +24,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'LandPageController@index')->name('home');
+Route::get('/producao', 'LandPageController@producao')->name('producao');

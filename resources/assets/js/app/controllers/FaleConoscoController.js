@@ -49,7 +49,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
 
   $scope.getToken = function () {
     ClientAPIService.getToken()
-      .success(function (data, status) {
+      .then(function (data, status) {
         $scope.token = data;
       });
   };
@@ -143,7 +143,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
       var selected = [];
       selected.push(entity.id);
       ClientAPIService.getDelete(modulo, selected)
-        .success(function (data) {
+        .then(function (data) {
           $scope.loadList = true;
 
           $scope.message = data.data;
@@ -157,7 +157,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
 
           $scope.entity = {};
         })
-        .error(function (data, status) {
+        .then(function (data, status) {
             if (status == 422) {
               $scope.errors = data.data;
             }
@@ -198,7 +198,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
 
       if (selecteds.length > 0) {
         ClientAPIService.getDelete('contato/delete', selecteds)
-          .success(function (data, status) {
+          .then(function (data, status) {
             $scope.itemsSelectedAll = false;
             $scope.message = data.data;
 
@@ -213,14 +213,14 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
 
     if (entity.id) {
       ClientAPIService.getPut('contato/atualizar/' + entity.id, entity)
-        .success(function (data, status) {
+        .then(function (data, status) {
           $scope.message = data.data;
 
           $scope.entity = {};
 
           $scope.edit(false);
         })
-        .error(function (data, status) {
+        .then(function (data, status) {
           if (status == 422) {
             $scope.errors = data;
           }
@@ -229,7 +229,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
       return;
     }
     ClientAPIService.getPost('contato/salvar', entity)
-      .success(function (data, status) {
+      .then(function (data, status) {
         entity.id = data.id;
 
         $scope.message = data.data;
@@ -240,7 +240,7 @@ module.exports = function ($scope, $log, $uibModal, ClientAPIService) {
 
         $scope.entity = {};
       })
-      .error(function (data, status) {
+      .then(function (data, status) {
         if (status == 422) {
           $scope.errors = data;
         }

@@ -18,7 +18,7 @@ class CreateBannersTable extends Migration
             $table->integer('pagina_id')->unsigned();
             $table->foreign('pagina_id')->references('id')->on('paginas');
             $table->string('retranca', 50);
-            $table->string('título', 150);
+            $table->string('titulo', 150);
             $table->string('resumo', 300);
             $table->string('link', 255);
             $table->string('imagem_destaque', 255);

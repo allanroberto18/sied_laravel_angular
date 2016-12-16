@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\ConfigRepository;
 use App\Repositories\PaginaRepository;
+use App\Repositories\PaginaVideoRepository;
 use App\Repositories\SobreNosRepository;
 use Illuminate\Http\Request;
 
@@ -21,13 +22,18 @@ class LandPageController extends Controller
      * @var PaginaRepository
      */
     private $paginaRepository;
+    /**
+     * @var PaginaVideoRepository
+     */
+    private $videoRepository;
 
     public function __construct(SobreNosRepository $sobreNosRepository, ConfigRepository $configRepository,
-                                PaginaRepository $paginaRepository)
+                                PaginaRepository $paginaRepository, PaginaVideoRepository $videoRepository)
     {
         $this->sobreNosRepository = $sobreNosRepository;
         $this->configRepository = $configRepository;
         $this->paginaRepository = $paginaRepository;
+        $this->videoRepository = $videoRepository;
     }
 
     public function index()
@@ -49,7 +55,32 @@ class LandPageController extends Controller
 
             $totalCaracteristicas = count($caracteristicas);
 
-            return view('LandPage.index', compact('sobreNos', 'config', 'pagina', 'caracteristicas', 'totalCaracteristicas'));
+            $video = $this->videoRepository->findByField('pagina_id', $pagina->id)->last();
+
+            return view('LandPage.index', compact('sobreNos', 'config', 'pagina', 'caracteristicas', 'totalCaracteristicas', 'video'));
+        } catch (\Exception $ex) {
+            return view('LandPage.construcao');
+        }
+    }
+
+    public function producao()
+    {
+        try {
+            $config = $this->configRepository->find(1);
+
+            $sobreNos = $this->sobreNosRepository->scopeQuery(function ($q) {
+                return $q->where(['status' => 1]);
+            })->skipPresenter(true)->all();
+
+            $pagina = $this->paginaRepository->find(1);
+
+            $caracteristicas = $this->makeSlider($this->processCaracteristicas($pagina));
+
+            $totalCaracteristicas = count($caracteristicas);
+
+            $video = $this->videoRepository->findByField('pagina_id', $pagina->id)->last();
+
+            return view('LandPage.index', compact('sobreNos', 'config', 'pagina', 'caracteristicas', 'totalCaracteristicas', 'video'));
         } catch (\Exception $ex) {
             dd($ex->getMessage());
             return view('LandPage.construcao');
@@ -78,12 +109,6 @@ class LandPageController extends Controller
         if ($total == 0) {
             return;
         }
-        $result = [];
-        for ($i = 0; $i < count($caracteristicas); $i+=3) {
-            $result[$i][] = $caracteristicas[$i];
-            $result[$i][] = $caracteristicas[$i+1];
-            $result[$i][] = $caracteristicas[$i+2];
-        }
-        return $result;
+        return array_chunk($caracteristicas, 3);
     }
 }

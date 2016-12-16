@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-sm-3 hidden-sm hidden-xs">
                     <div class="logo floatleft">
-                        <a href="index.html"><img src="{{ asset('img/logoweb.png') }}" alt="ROBIC" style="height: 62px;" /></a>
+                        <a href="index.html"><img src="img/config/{{$config->logo}}" alt="{{ $config->nome }}" style="height: 62px;" /></a>
                     </div>
                 </div>
                 <div class="col-md-9 hidden-sm hidden-xs">

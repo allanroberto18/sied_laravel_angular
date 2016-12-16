@@ -83,7 +83,7 @@ class BannerController extends Controller
     {
         $file = $request->file('file');
 
-        $path = "img/banners";
+        $path = "img/banner";
 
         $ext = $file->getClientOriginalExtension();
         $fileName = random_int(1111,9999) .'.'.$ext;

@@ -38,17 +38,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group" ng-class="{'has-error': form.resumo.$touched && form.resumo.$error.required}">
+                <div class="form-group">
                     <label for="resumo">
-                        <i ng-class="{'fa fa-times-circle-o': form.resumo.$touched && form.resumo.$error.required}"></i>
                         Resumo:
                     </label>
-                    <textarea name="resumo" class="form-control" maxlength="133" rows="3" ng-model="entity.resumo" required></textarea>
-                    <div class="help-block" ng-show="form.$submitted || form.resumo.$touched">
-                        <div ng-show="form.resumo.$error.required">
-                            <i class="fa fa-exclamation-circle"></i> O campo Descrição é obrigatório
-                        </div>
-                    </div>
+                    <textarea name="resumo" class="form-control" maxlength="133" rows="3" ng-model="entity.resumo"></textarea>
                 </div>
                 <div class="form-group" ng-class="{'has-error': form.link.$touched && form.link.$error.required }">
                     <label for="link">
@@ -68,8 +62,8 @@
                         Imagem de Destaque:
                     </label>
                     <input type="file" name="file" onchange="angular.element(this).scope().upload(files, 1)" accept="image/*"/>
-                    <div class="mt mb" ng-if="imagem_destaque" ng-class="thumbnail">
-                        <img src="img/banner/{{imagem_destaque}}" class="img-responsive">
+                    <div class="mt mb" ng-if="entity.imagem_destaque" ng-class="thumbnail">
+                        <img src="img/banner/{{entity.imagem_destaque}}" class="img-responsive">
                     </div>
                     <div class="help-block" ng-show="errors.imagem[0]">
                         <div ng-show="errors.imagem[0]">
@@ -83,8 +77,8 @@
                         Imagem de Fundo:
                     </label>
                     <input type="file" name="file" onchange="angular.element(this).scope().upload(files, 2)" accept="image/*"/>
-                    <div class="mt mb" ng-if="imagem_destaque" ng-class="thumbnail">
-                        <img src="img/banner/{{imagem_destaque}}" class="img-responsive">
+                    <div class="mt mb" ng-if="entity.imagem_fundo" ng-class="thumbnail">
+                        <img src="img/banner/{{entity.imagem_fundo}}" class="img-responsive">
                     </div>
                     <div class="help-block" ng-show="errors.imagem[0]">
                         <div ng-show="errors.imagem[0]">

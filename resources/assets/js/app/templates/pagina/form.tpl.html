@@ -11,6 +11,13 @@
                         <i class="fa fa-close"></i>
                     </button>
                 </div>
+                <!--<ul>-->
+                    <!--<li ng-repeat="(key, errors) in form.$error track by $index"> <strong>{{ key }}</strong> errors-->
+                        <!--<ul>-->
+                            <!--<li ng-repeat="e in errors">{{ e.$name }} has an error: <strong>{{ key }}</strong>.</li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                <!--</ul>-->
             </div>
             <div class="box-body">
                 <input type="hidden" name="_token" value="{{ token }}"/>
@@ -37,9 +44,12 @@
                         <i ng-class="{'fa fa-times-circle-o': form.resumo.$touched && form.resumo.$error.required}"></i> Resumo:
                     </label>
                     <textarea name="resumo" class="form-control" maxlength="133" rows="3" ng-model="entity.resumo" required></textarea>
-                    <div class="help-block" ng-show="form.$submitted || form.resumo.$touched">
+                    <div class="help-block" ng-show="form.$submitted || form.resumo.$touched || form.resumo.$error.maxlength">
                         <div ng-show="form.resumo.$error.required">
                             <i class="fa fa-exclamation-circle"></i> O campo Resumo é obrigatório
+                        </div>
+                        <div ng-show="form.resumo.$error.maxlength">
+                            <i class="fa fa-exclamation-circle"></i> Qunatidade máxima de caractéres permitido é 133 nesse campo
                         </div>
                     </div>
                 </div>

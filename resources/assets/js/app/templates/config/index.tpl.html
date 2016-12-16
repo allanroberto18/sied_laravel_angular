@@ -1,17 +1,17 @@
 <div ng-controller="ConfigController" ng-init="init()">
     <div class="row mb">
         <section class="content-header">
-        <h1>
-            {{ modulo.title }}
-            <small>{{ modulo.subtitle }}</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li>
-                <a href="#"><i class="fa fa-tachometer"></i> Principal</a>
-            </li>
-            <li class="active"><i class="fa fa-gears"></i> Configurações</li>
-        </ol>
-    </section>
+            <h1>
+                {{ modulo.title }}
+                <small>{{ modulo.subtitle }}</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="#"><i class="fa fa-tachometer"></i> Principal</a>
+                </li>
+                <li class="active"><i class="fa fa-gears"></i> Configurações</li>
+            </ol>
+        </section>
     </div>
     <script type="text/ng-template" id="modal.tpl.html">
         <div class="modal-dialog">
@@ -40,7 +40,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <alert-msg ng-show="message" ng-click="closeMessage()" title="Mensagem:">
-                {{ message }}
+                {{ message.data }}
             </alert-msg>
         </div>
         <div ng-include="'js/app/templates/config/form.tpl.html'"></div>

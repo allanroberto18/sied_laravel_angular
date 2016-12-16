@@ -1,4 +1,4 @@
 module.exports = {
   appName: "Sied Sistemas",
-  apiUrl:  "Http://siedsistemas.com.br/"
+  apiUrl:  "http://siedsistemas.com.br/"
 };

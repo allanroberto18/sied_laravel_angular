@@ -1111,9 +1111,9 @@ footer {
 .layout-two-slider .layer-1 img, .layout-two-video .layer-1 img {
     animation: 0.8s ease-in-out 0.5s normal backwards 1 running fadeInUp;
     bottom: 0;
-    left: 70%;
+    left: 10%;
     top: auto;
-    width: 25%;
+    width: 90%;
 }
 .layout-two-slider .banner-content .text-content, #slider.layout-two-video .video-banner .text-content {
     max-width: 88.65%;
